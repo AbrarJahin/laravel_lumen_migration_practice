@@ -17,6 +17,7 @@ class CreateCustomerBasicServiceTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')  ->unsigned()  ->index();
             $table->integer('property_id')  ->unsigned()  ->index();
+            $table->float('money_payable');
             //basic_service table not needed because basic service is only one
             $table->tinyInteger('is_enabled');              //Nothing would be deleted from this table
             $table->timestamps();   //updated_at = time of disabling
