@@ -19,9 +19,9 @@ class CreatePartnerAvailablityTable extends Migration
             $table->integer('time_id',false,2)      ->unsigned()  ->index();
 
             //Foreign Keys
-            $table->foreign('partner_id')  ->references('id')->on('users');
-            $table->foreign('day_id')  ->references('id')->on('users');
-            $table->foreign('time_id')  ->references('id')->on('users');
+            $table->foreign('partner_id')  ->references('id')->on('partners');
+            $table->foreign('day_id')  ->references('id')->on('service_day');
+            $table->foreign('time_id')  ->references('id')->on('service_time');
 
             $table->index(['partner_id', 'day_id', 'time_id']);
         });

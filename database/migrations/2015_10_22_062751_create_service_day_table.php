@@ -14,7 +14,7 @@ class CreateServiceDayTable extends Migration
     {
         Schema::create('service_day', function (Blueprint $table)
         {
-            $table->increments('id');
+            $table->increments('id',1);
             $table->string('day_name',10);
         });
     }
