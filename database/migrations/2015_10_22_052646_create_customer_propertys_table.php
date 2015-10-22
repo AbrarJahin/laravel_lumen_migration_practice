@@ -14,8 +14,8 @@ class CreateCustomerPropertysTable extends Migration
     {
         Schema::create('customer_property', function (Blueprint $table)
         {
+            $table->increments('id');
             $table->integer('customer_id')  ->unsigned()  ->index();
-            $table->string('mobile_no',20);
             $table->string('house_no',20);
             $table->string('street-address',50);
             $table->string('zip_code',10)->index();
@@ -27,6 +27,9 @@ class CreateCustomerPropertysTable extends Migration
             //Foreign Keys
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('zip_code')->references('zip_code')->on('zip_codes');   //if not in zip_codes table, then create it
+
+            //Group Unique ->Not added because of too long names
+            //$table->index(['customer_id', 'house_no', 'street-address', 'zip_code', 'city', 'state_id']);
         });
     }
 

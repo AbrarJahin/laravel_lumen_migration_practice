@@ -23,6 +23,7 @@ class CreatePartnerAvailablityTable extends Migration
             $table->foreign('day_id')  ->references('id')->on('service_day');
             $table->foreign('time_id')  ->references('id')->on('service_time');
 
+            //Unique
             $table->index(['partner_id', 'day_id', 'time_id']);
         });
     }

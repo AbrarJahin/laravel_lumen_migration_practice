@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCustomerExtraServiceTable extends Migration
+class CreateCustomerBasicServiceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,19 +12,18 @@ class CreateCustomerExtraServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer-extra_service', function (Blueprint $table)
+        Schema::create('customer-basic_service', function (Blueprint $table)
         {
             $table->increments('id');
             $table->integer('customer_id')  ->unsigned()  ->index();
             $table->integer('property_id')  ->unsigned()  ->index();
-            $table->integer('extra_service_id')  ->unsigned()  ->index();
+            //basic_service table not needed because basic service is only one
             $table->tinyInteger('is_enabled');              //Nothing would be deleted from this table
             $table->timestamps();   //updated_at = time of disabling
 
             //Foreign Keys
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('property_id')->references('id')->on('customer_property');
-            $table->foreign('extra_service_id')->references('id')->on('extra_provided_services');
         });
     }
 
@@ -35,6 +34,6 @@ class CreateCustomerExtraServiceTable extends Migration
      */
     public function down()
     {
-        Schema::drop('customer-extra_service');
+        Schema::drop('customer-basic_service');
     }
 }
