@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('login_name',15)  ->index();
             $table->string('password', 60);
             $table->string('user_type',10);    //May be int, but int is easy to understand and debugging, so the value would be "client", "partner", "admin"
+            $table->string('referal_code',60)->unique();
 
             $table->rememberToken();
             $table->timestamps();

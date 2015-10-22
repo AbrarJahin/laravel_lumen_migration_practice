@@ -19,7 +19,6 @@ class CreatePartnersTable extends Migration
             $table->string('company_name',20);
             $table->string('type_of_phone',10);
             $table->tinyInteger('is_18_years_old');
-            $table->string('referal_code',60)->unique();
 
             //Foreign Keys
             $table->foreign('user_id')->references('id')->on('users');

@@ -9,7 +9,7 @@ class UpdateCustomersTable extends Migration
     {
         Schema::table('customers',function(Blueprint $table)
         {
-            $table->integer('selected_credit_card_id')->after('referrel_code')->unsigned()  ->index();
+            $table->integer('selected_credit_card_id')->after('stripe_id')->unsigned()  ->index();
 
             //Foreign Keys
             $table->foreign('selected_credit_card_id')->references('id')->on('credit_cards');

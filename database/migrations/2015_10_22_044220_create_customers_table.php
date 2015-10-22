@@ -20,7 +20,6 @@ class CreateCustomersTable extends Migration
             $table->string('email',30)  ->unique();
             $table->tinyInteger('is_email_verified');   //true=1, false=0
             $table->string('stripe_id',60)  ->unique();
-            $table->string('referrel_code',60)  ->unique();
 
             //Foreign Keys
             $table->foreign('user_id')->references('id')->on('users');
